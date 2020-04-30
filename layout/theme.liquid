@@ -97,7 +97,12 @@
     <div class="main-content__wrapper">
       <main class="content-for-layout" id="MainContent" role="main">
         {{ content_for_layout }}
+
+        <!-- include content for free Gift -->
         {% include 'free-gift' %}
+        <!-- end include content for free Gift -->
+
+
       </main>
 
       {% section 'footer' %}

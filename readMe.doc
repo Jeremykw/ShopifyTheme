@@ -9,3 +9,13 @@ Code had been added in these files:
 * ShopifyTheme/snippets/free-gift.liquid
 	- custom HTML and JavaScript that passes data from the Shopify
 	  object into the freeGift object
+
+Shopify Theme Kit was used for the develoment inviroment, instalation
+instructions can be found at https://shopify.github.io/themekit/. Key comands to remember:
+* theme open
+* theme watch
+
+their is a live verison at the url: 
+https://kwm-test-store.myshopify.com
+
+
