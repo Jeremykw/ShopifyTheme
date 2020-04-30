@@ -13,8 +13,17 @@
 			</div>
 			<div id="show_gift_options">
 			  	<ul class="gift_selection">
-				  	<input type="checkbox" name="key_{{ product.key }}">
-				  	<label for="key_{{ product.key }}">{{ product.title | en }} - {{ product.price | money}}</label>		  		
+			  		{% for gift in collections.all.products %}
+			  			{% if gift.price <= 2000 %}
+			  				<li>
+						  		<input type="checkbox" name="free_gift_key_{{ gift.id }}">
+						  		<label for="free_gift_key_{{ gift.id }}">
+						  			{{ gift.title | en }} - {{ gift.price | money}}
+						  		</label>
+						  	</li>		  		
+
+			  			{% endif %}
+			  		{% endfor %}
 			  	</ul>
 			<div>
 				<button id="free-gift-close-button"class="btn btn--small">close</button>
@@ -29,10 +38,10 @@
 
 
 <script type="text/javascript">
-const freeGift = freeGift || {};
+var freeGift = freeGift || {};
 
 // add Shopify cart and products object to freeGift Object 
-const freeGift.shopifyData = {
+freeGift.shopifyData = {
 	cart: {{ cart | json }},
 	products: {{ collections.all.products | json }},
 	// TODO whatPageAmI = whatPageAmI

@@ -3,16 +3,16 @@
 /-----------------------------------------------------------------------------*/
 
 // Insert any custom theme js here...
-const freeGift = freeGift || {};
+var freeGift = freeGift || {};
 
 /*
 View Free Gift 
 */
 
-const freeGift.view = {
+freeGift.view = {
 	div: () => document.querySelector('#free-gift'),
 	closeButton: () => document.querySelector('#free-gift-close-button'),
-	showOptioinDiv: () => document.querySelector('#show_gift_options'),
+	checkboxes: () => document.querySelectorAll('input[type=checkbox]'),
 }
 
 freeGift.view.hidden = function() {
@@ -24,8 +24,26 @@ freeGift.view.render = function() {
 		const div = freeGift.view.div();
 		const closeButton = freeGift.view.closeButton();
 		div.classList.remove('hidden');
+		freeGift.view.selectOneGiftOnly();
 		closeButton.addEventListener('click', freeGift.view.hidden );
 	}
+}
+
+// limit to one gift selection
+freeGift.view.selectOneGiftOnly = function() {
+	let checkboxes = freeGift.view.checkboxes();
+	checkboxes.forEach(checkbox => {
+		checkbox.addEventListener('change', ()=> {
+			if ( checkbox.checked ) {
+				checkboxes.forEach(box => {
+					if (box !== checkbox) {
+						box.checked = false;
+					}
+				})
+			}
+		})
+	})
+	
 }
 
 
@@ -40,11 +58,11 @@ End View Free Gift
 /*
 Controller Free Gift 
 */
-const freeGift.controller = {
+freeGift.controller = {
 	init: function() {
 		freeGift.view.render();
 	},
-	hasBeenNotified: false,
+	hasBeenNotified: false, // document.cookie
 
 };
 // // Controller Gift selection 
