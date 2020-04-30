@@ -1,0 +1,49 @@
+
+
+<!-- create div tree for free gift modal -->
+<div id="free-gift" class="modal_container hidden">
+	<div class="modal">
+		<div class="modal_content">	
+			<div>
+				<span>Your cart subtotal is greater than $50. You have won a free gift, please select an item below.</span>
+			</div>
+			<div class="free_gift_cart_subtotal">
+				<span>Cart Subtotal: </span>
+				<span class="free_gift_cart_subtotal_price">{{ cart.total_price | money}}</span>
+			</div>
+			<div id="show_gift_options">
+			  	<ul class="gift_selection">
+				  	<input type="checkbox" name="key_{{ product.key }}">
+				  	<label for="key_{{ product.key }}">{{ product.title | en }} - {{ product.price | money}}</label>		  		
+			  	</ul>
+			<div>
+				<button id="free-gift-close-button"class="btn btn--small">close</button>
+			</div>
+		</div>
+	</div>
+</div>	
+
+
+
+
+
+
+<script type="text/javascript">
+const freeGift = freeGift || {};
+
+// add Shopify cart and products object to freeGift Object 
+const freeGift.shopifyData = {
+	cart: {{ cart | json }},
+	products: {{ collections.all.products | json }},
+	// TODO whatPageAmI = whatPageAmI
+}
+
+
+</script>
+
+
+
+
+
+
+

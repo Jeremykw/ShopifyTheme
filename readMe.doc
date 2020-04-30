@@ -1,0 +1,11 @@
+A feature has been added to this shopify theme that offers potential customers a free gift if they spend over $50. This has been done a an exerise that is part of the Shopify application process.
+
+Code had been added in these files:
+* ShopifyTheme/assets/custom.js
+	- custom JavaScript using a simple MVC paredim
+* ShopifyTheme/layout/theme.liquid 
+	- line 102 has an include statemet to insert the 
+	  free gift HTML
+* ShopifyTheme/snippets/free-gift.liquid
+	- custom HTML and JavaScript that passes data from the Shopify
+	  object into the freeGift object
